@@ -1,0 +1,11 @@
+machine:
+  timezone:
+    Asia/Tokyo
+  go:
+    version: 1.5
+
+test:
+  pre:
+    - bash make.sh clean
+  post:
+    - bash make.sh build
