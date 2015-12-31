@@ -21,7 +21,7 @@ func (d rdir) Readdir(count int) ([]NamedAttr, error) {
 	rs := make([]NamedAttr, len(fis))
 	for i, fi := range fis {
 		rs[i].Name = fi.Name()
-		rs[i].FillFrom(fi)
+		// rs[i].FillFrom(fi)
 	}
 	return rs, nil
 }

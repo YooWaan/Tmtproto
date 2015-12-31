@@ -7,6 +7,7 @@ BIN_DIR=bin
 
 DEV_PKGS=(
   server
+  fileapi
 )
 
 mode=$1
@@ -18,14 +19,14 @@ clean_dir() {
   mkdir "$SRC_DIR" "$PKG_DIR" "$BIN_DIR"
   # make links
   cd src
-  for d in ${DEV_PKGS} ; do
+  for d in ${DEV_PKGS[@]} ; do
     ln -sf "../$d" $d
   done
   go env
 }
 
 run_go_command() {
-  for d in ${DEV_PKGS} ; do
+  for d in ${DEV_PKGS[@]} ; do
      go "$mode" "$d"
   done
 }
