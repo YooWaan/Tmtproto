@@ -6,8 +6,13 @@ machine:
   environment:
     GOPATH: $HOME/Tmtproto
 
-test:
+dependencies:
   pre:
     - bash make.sh clean
+  post:
+    - go get github.com/msteinert/pam
+
+test:
+  pre:
   post:
     - bash make.sh build
