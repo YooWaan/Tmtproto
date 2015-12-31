@@ -3,6 +3,8 @@ machine:
     Asia/Tokyo
   golang:
     version: 1.5
+  environment:
+    GOPATH: $HOME/Tmtproto
 
 test:
   pre:
