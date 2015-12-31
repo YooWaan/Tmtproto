@@ -9,7 +9,7 @@ machine:
 dependencies:
   pre:
     - bash make.sh clean
-    - apt-get install libpam0g-dev
+    - sudo apt-get install libpam0g-dev
   post:
     - go get github.com/msteinert/pam
 
