@@ -32,3 +32,16 @@ export GOPATH=`pwd`
 # install
 ./make.sh install
 </pre>
+
+
+How to add dependency
+---------------------------
+
+<pre>
+# get other package
+go get github.com/msteinert/pam
+
+# save dependency
+go install github.com/msteinert/pam
+
+</pre>
