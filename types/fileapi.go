@@ -7,8 +7,8 @@ import (
 
 type FsEntry interface {
 	Name() string
-	isDir() bool
-	isFile() bool
+	IsDir() bool
+	IsFile() bool
 }
 
 type Dir interface {
@@ -18,8 +18,6 @@ type Dir interface {
 
 type File interface {
 	FsEntry
-	FStat() (map[string]string, error)
-	FSetStat(map[string]string) error
 }
 
 type FileSystem interface {
