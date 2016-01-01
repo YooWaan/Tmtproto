@@ -1,11 +1,19 @@
 machine:
   timezone:
     Asia/Tokyo
-  go:
+  golang:
     version: 1.5
+  environment:
+    GOPATH: $HOME/Tmtproto
+
+dependencies:
+  pre:
+    - bash make.sh clean
+    - sudo apt-get install libpam0g-dev
+  post:
+    - go get github.com/msteinert/pam
 
 test:
   pre:
-    - bash make.sh clean
   post:
     - bash make.sh build

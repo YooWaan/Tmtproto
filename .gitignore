@@ -1,3 +1,5 @@
 src
 pkg
 bin
+Godeps/_workspace
+Godeps/Readme
