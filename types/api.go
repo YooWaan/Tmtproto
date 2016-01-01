@@ -7,7 +7,6 @@ import (
 
 type FsEntry interface {
 	Name() string
-	Remove(name string) error
 	isDir() bool
 	isFile() bool
 }
