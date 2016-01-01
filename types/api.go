@@ -23,10 +23,10 @@ type File interface {
 }
 
 type FileSystem interface {
-	List(name string, flags uint32, attr map[string]string) (FsEntry, error)
+	List(name string) (FsEntry, error)
 	Remove(FsEntry) error
-	Rename(old string, new string, flags uint32) error
-	Mkdir(name string, attr map[string]string) error
+	Rename(old string, new string) error
+	Mkdir(name string) error
 	Read(FsEntry) (io.Reader, error)
 	Write(FsEntry) (io.Writer, error)
 
