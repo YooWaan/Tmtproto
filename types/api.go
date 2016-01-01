@@ -6,7 +6,6 @@ import (
 )
 
 type FsEntry interface {
-	io.Closer
 	Name() string
 	Remove(name string) error
 	isDir() bool
@@ -20,8 +19,6 @@ type Dir interface {
 
 type File interface {
 	FsEntry
-	io.ReaderAt
-	io.WriterAt
 	FStat() (map[string]string, error)
 	FSetStat(map[string]string) error
 }
