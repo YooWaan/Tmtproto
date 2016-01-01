@@ -26,11 +26,12 @@ type File interface {
 }
 
 type FileSystem interface {
-	Open(name string, flags uint32, attr map[string]string) (DirectoryEntry, error)
+	List(name string, flags uint32, attr map[string]string) (DirectoryEntry, error)
 	Remove(name string) error
 	Rename(old string, new string, flags uint32) error
 	Mkdir(name string, attr map[string]string) error
-	Rmdir(name string) error
-	Stat(name string, islstat bool) (map[string]string, error)
-	SetStat(name string, attr map[string]string) error
+
+	// TODO: Stat 関連を実装する
+	// Stat(name string, islstat bool) (map[string]string, error)
+	// SetStat(name string, attr map[string]string) error
 }

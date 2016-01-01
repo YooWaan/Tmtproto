@@ -55,8 +55,8 @@ func rfsMangle(fpath string) (string, error) {
 	return fpath, nil
 }
 
-// Open
-func (LocalFS) Open(fpath string) (types.DirectoryEntry, error) {
+// List
+func (LocalFS) List(fpath string) (types.DirectoryEntry, error) {
 	// TODO: ディレクトリ内を読み込む動作を記述する
 	// p, e := rfsMangle(fpath)
 	// if e != nil {
