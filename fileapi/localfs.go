@@ -15,14 +15,14 @@ type rdir struct {
 	d *os.File
 }
 
-func (rd rdir) Readdir(count int) (map[int]types.DirectoryEntry, error) {
+func (rd rdir) Readdir(count int) (map[int]types.FsEntry, error) {
 	// TODO: ディレクトリ内を読み込む動作を記述する
 	// fInfos, e := rd.d.Readdir(count)
 	// if e != nil {
 	// 	return nil, e
 	// }
 	// // rs := map[int]ret{}
-	// rs := make(map[int]types.DirectoryEntry, len(fInfos))
+	// rs := make(map[int]types.FsEntry, len(fInfos))
 	// for i, fInfo := range fInfos {
 	// 	// rs[i] = ret{Name: fInfo.Name()}
 	// }
@@ -56,7 +56,7 @@ func rfsMangle(fpath string) (string, error) {
 }
 
 // List
-func (LocalFS) List(fpath string) (types.DirectoryEntry, error) {
+func (LocalFS) List(fpath string) (types.FsEntry, error) {
 	// TODO: ディレクトリ内を読み込む動作を記述する
 	// p, e := rfsMangle(fpath)
 	// if e != nil {
