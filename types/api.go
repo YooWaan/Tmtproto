@@ -5,15 +5,6 @@ import (
 	// "os"
 )
 
-const (
-	ATTR_SIZE    = 0x00000001
-	ATTR_UIDGID  = 0x00000002
-	ATTR_MODE    = 0x00000004
-	ATTR_TIME    = 0x00000008
-	MODE_REGULAR = 0100000
-	MODE_DIR     = 0040000
-)
-
 type DirectoryEntry interface {
 	io.Closer
 	Name() string
