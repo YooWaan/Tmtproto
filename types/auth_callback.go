@@ -7,7 +7,9 @@ package types
 
 type AuthType uint
 const (
-	PAM AuthType = 1
+	UNKNOWN AuthType = 0
+	MAP     AuthType = 1
+	PAM     AuthType = 2
 )
 
 type AuthInfo interface {
