@@ -9,6 +9,7 @@ DEV_PKGS=(
   types
   auth
   server
+  fileapi
 )
 
 mode=$1
@@ -31,7 +32,7 @@ clean_dir() {
 }
 
 run_go_command() {
-  for d in ${DEV_PKGS} ; do
+  for d in ${DEV_PKGS[@]} ; do
      go "$mode" "$d"
   done
 }
