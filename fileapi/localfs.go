@@ -4,6 +4,8 @@ import (
 	"errors"
 	"os"
 	"strings"
+
+	"types"
 )
 
 // type rdir
@@ -13,20 +15,22 @@ type rdir struct {
 	d *os.File
 }
 
-func (d rdir) Readdir(count int) ([]NamedAttr, error) {
-	fis, e := d.d.Readdir(count)
-	if e != nil {
-		return nil, e
-	}
-	rs := make([]NamedAttr, len(fis))
-	for i, fi := range fis {
-		rs[i].Name = fi.Name()
-		// rs[i].FillFrom(fi)
-	}
-	return rs, nil
+func (rd rdir) Readdir(count int) (map[int]types.DirectoryEntry, error) {
+	// TODO: ディレクトリ内を読み込む動作を記述する
+	// fInfos, e := rd.d.Readdir(count)
+	// if e != nil {
+	// 	return nil, e
+	// }
+	// // rs := map[int]ret{}
+	// rs := make(map[int]types.DirectoryEntry, len(fInfos))
+	// for i, fInfo := range fInfos {
+	// 	// rs[i] = ret{Name: fInfo.Name()}
+	// }
+	// return rs, nil
+	return nil, nil
 }
-func (d rdir) Close() error {
-	return d.d.Close()
+func (rd rdir) Close() error {
+	return rd.d.Close()
 }
 
 // type LocalFS
@@ -51,15 +55,17 @@ func rfsMangle(fpath string) (string, error) {
 	return fpath, nil
 }
 
-// OpenDir
-func (LocalFS) OpenDir(fpath string) (Dir, error) {
-	p, e := rfsMangle(fpath)
-	if e != nil {
-		return nil, e
-	}
-	f, e := os.Open(p)
-	if e != nil {
-		return nil, e
-	}
-	return rdir{f}, nil
+// Open
+func (LocalFS) Open(fpath string) (types.DirectoryEntry, error) {
+	// TODO: ディレクトリ内を読み込む動作を記述する
+	// p, e := rfsMangle(fpath)
+	// if e != nil {
+	// 	return nil, e
+	// }
+	// osFile, e := os.Open(p)
+	// if e != nil {
+	// 	return nil, e
+	// }
+	// return rdir{osFile}, nil
+	return nil, nil
 }

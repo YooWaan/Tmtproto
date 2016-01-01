@@ -7,7 +7,7 @@ import (
 
 func main() {
 	var fs fileapi.LocalFS
-	var dirIO, _ = fs.OpenDir(".")
+	var dirIO, _ = fs.Open(".")
 	var dir, _ = dirIO.Readdir(1024)
 
 	var_dump( dir )

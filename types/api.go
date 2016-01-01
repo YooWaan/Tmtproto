@@ -1,14 +1,9 @@
-package fileapi
+package types
 
 import (
 	"io"
 	// "os"
 )
-
-type NamedAttr struct {
-	Name string
-	Attr map[string]string
-}
 
 const (
 	ATTR_SIZE    = 0x00000001
@@ -19,9 +14,16 @@ const (
 	MODE_DIR     = 0040000
 )
 
+type DirectoryEntry interface {
+	io.Closer
+	Name() string
+	isDir() bool
+	isFile() bool
+}
+
 type Dir interface {
 	io.Closer
-	Readdir(count int) ([]NamedAttr, error)
+	Readdir(count int) (map[string]string, error)
 }
 
 type File interface {
@@ -33,8 +35,7 @@ type File interface {
 }
 
 type FileSystem interface {
-	OpenFile(name string, flags uint32, attr map[string]string) (File, error)
-	OpenDir(name string) (Dir, error)
+	Open(name string, flags uint32, attr map[string]string) (DirectoryEntry, error)
 	Remove(name string) error
 	Rename(old string, new string, flags uint32) error
 	Mkdir(name string, attr map[string]string) error

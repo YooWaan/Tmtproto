@@ -3,6 +3,8 @@ package fileapi
 import (
 	"errors"
 	"path"
+
+	"types"
 )
 
 var Failure = errors.New("Failure")
@@ -17,8 +19,7 @@ func (EmptyFile) FSetStat(map[string]string) error               { return Failur
 
 type EmptyFS struct {}
 
-func (EmptyFS) OpenFile(string, uint32, map[string]string) (File, error)  { return nil, Failure }
-func (EmptyFS) OpenDir(string) (Dir, error)                   { return nil, Failure }
+func (EmptyFS) Open(string, uint32, map[string]string) (types.DirectoryEntry, error)  { return nil, Failure }
 func (EmptyFS) Remove(string) error                           { return Failure }
 func (EmptyFS) Rename(string, string, uint32) error           { return Failure }
 func (EmptyFS) Mkdir(string, map[string]string) error                     { return Failure }
