@@ -4,14 +4,21 @@ package types
 	"errors"
 )*/
 
+
+type AuthType uint
 const (
-	PAM uint8 = 1
+	PAM AuthType = 1
 )
+
+type AuthInfo interface {
+	Type() AuthType
+}
+
 
 type AuthCallback interface {
 
-	Type() uint8
+	Type() AuthType
 
-	Authenticate(coninfo ConnInfo)  (Permissions, error)
+	Authenticate(coninfo ConnInfo, authinfo AuthInfo)  (*Permissions, error)
 
 }
